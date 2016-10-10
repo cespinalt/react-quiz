@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Question from './quiz/Question.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -68,7 +69,7 @@ class App extends Component {
     return(
       <div>
         {this.state.questions.map(q => {
-          return q.text;
+          return <Question questions={q} />
         })}
       </div>
     )
