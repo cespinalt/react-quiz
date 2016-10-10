@@ -8,7 +8,9 @@ class Question extends Component {
         <h3>{this.props.question.text}</h3>
         <ul className="list-group">
           {this.props.question.choices.map(a => {
-            return <Answer answer={a} key={a.id} />
+            return <Answer answer={a} key={a.id}
+            onChangeHandler={this.props.onChangeHandler}
+            correct={this.props.question.correct} />
           })}
         </ul>
       </div>

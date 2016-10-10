@@ -13,6 +13,7 @@ class App extends Component {
         {
           id: 1,
           text: 'What\'s your father\'s name?',
+          correct: 'a',
           choices: [
             {
               id: 'a',
@@ -31,6 +32,7 @@ class App extends Component {
         {
           id: 2,
           text: 'What\'s your mather\'s name?',
+          correct: 'a',
           choices: [
             {
               id: 'a',
@@ -49,6 +51,7 @@ class App extends Component {
         {
           id: 3,
           text: 'What\'s your younger brother\'s name?',
+          correct: 'b',
           choices: [
             {
               id: 'a',
@@ -68,8 +71,11 @@ class App extends Component {
     }
   }
 
-  displayNextQuestion() {
-    this.setState({current: (this.state.current + 1)});
+  displayNextQuestion(correct) {
+    const stateUpdate = {}
+    stateUpdate.current = this.state.current + 1;
+    stateUpdate.score = this.state.score + correct;
+    this.setState(stateUpdate);
   }
 
   render() {
