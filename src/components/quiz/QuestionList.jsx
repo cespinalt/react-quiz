@@ -4,6 +4,7 @@ import Question from './Question.jsx';
 class QuestionList extends Component {
   onSubmitHandler(e) {
     e.preventDefault();
+    
     this.props.onChangeHandler();
   }
 
