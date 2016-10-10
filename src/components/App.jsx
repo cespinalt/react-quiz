@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import QuestionList from './quiz/QuestionList.jsx';
+import Score from './quiz/Score.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -72,12 +73,22 @@ class App extends Component {
   }
 
   render() {
+    let questionList;
+    if(this.state.current > this.state.questions.length) {
+      questionList = '';
+    } else {
+      questionList = <QuestionList {...this.state} onChangeHandler={this.displayNextQuestion.bind(this)} />;
+    }
     return(
       <div className="container">
         <div className="row">
-          <QuestionList {...this.state}
-          onChangeHandler={this.displayNextQuestion.bind(this)} />
-        </div>
+          <h1 className="text-center">Simple React Quiz</h1>
+          <p className="text-center">Test your awesomeness in React.js</p>
+          <div className="well">
+            <Score {...this.state} />
+          </div>
+            {questionList}
+          </div>
       </div>
     )
   }
