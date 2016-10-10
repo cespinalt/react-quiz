@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import Question from './quiz/Question.jsx';
+import QuestionList from './quiz/QuestionList.jsx';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      score: 0,
+      current: 1,
       questions: [
         {
           id: 1,
@@ -65,12 +67,17 @@ class App extends Component {
     }
   }
 
+  displayNextQuestion() {
+    this.setState({current: (this.state.current + 1)});
+  }
+
   render() {
     return(
-      <div>
-        {this.state.questions.map(q => {
-          return <Question questions={q} />
-        })}
+      <div className="container">
+        <div className="row">
+          <QuestionList {...this.state}
+          onChangeHandler={this.displayNextQuestion.bind(this)} />
+        </div>
       </div>
     )
   }
